@@ -7,8 +7,12 @@
 
         $stateProvider
             .state('home', {
-                url: "/",
+                url: '/',
                 templateUrl: 'client/views/home.ng.html'
+            })
+            .state('perguntas', {
+                url: '/perguntas/{id}',
+                template: 'TESTE'
             });
     }]);
 }());

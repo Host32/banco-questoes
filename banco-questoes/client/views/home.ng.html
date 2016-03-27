@@ -1,5 +1,5 @@
 <div ng-controller="HomeController" class="home-page">
-    <h4 class="page-title">Encontre respostas para as mais diversas questões de provas.</h4>
+    <h3 class="page-title">Encontre respostas para as mais diversas questões de provas.</h3>
     <div>
         <ul class="nav nav-tabs">
             <li role="presentation" class="{{abaSelecionada == 'destaque' && 'active'}}">
@@ -25,7 +25,7 @@
                             {{pergunta.countVisualizacoes}} visualizações
                         </p>
                         <p>
-                            <a href="#">Ver respostas</a>
+                            <a ui-sref="perguntas({id: pergunta._id._str})">Ver respostas</a>
                         </p>
                     </li>
                 </ul>
