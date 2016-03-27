@@ -1,0 +1,74 @@
+<body ng-app="banco-questoes">
+    <!-- Cadastrar -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-second btn-md" data-toggle="modal" data-target="#myModal">
+                    Cadastre sua pergunta.
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- /Cadastrar -->
+
+    <!-- Modal -->
+    <div ng-controller="CadastroPerguntas">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content" ng-submit="CadastroPerguntas.$valid && insereNovaPergunta(novaPergunta)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Pergunta a ser cadastrada:</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group col-md-12">
+                                    <label class="col-md-6">Enuciado:</label>
+                                    <textarea class="form-control" rows="5" id="enuciado"></textarea>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button ng-click="addAlternativa()" class="btn btn-primary">Adicionar Alternativas</button>
+                                    <button ng-click="remove()" class="btn btn-danger">Remover Alternativas</button>
+                                </div>
+                                <div ng-repeat="alternativas in pergunta.alternativas">
+                                    <div class="form-group col-md-12">
+                                        <div class="input-group">
+                                            <label class="col-md-6">Alternativa {{$index+1}}:</label>
+                                            <span class="input-group-addon">
+                                    <input type="radio" aria-label="Radio button for following text input">
+                                </span>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Tags:</span>
+                                        <input type="text" class="form-control" placeholder="Identifique sua pergunta através das tags...">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal -->
+    <div ng-controller="CadastroPerguntas">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 form-group">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
