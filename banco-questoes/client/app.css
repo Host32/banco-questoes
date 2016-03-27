@@ -25,6 +25,14 @@ body {
         width: 100%;
     }
 }
+.navbar-collapse.in {
+    overflow-y: visible !Important;
+}
+@media(max-width: 992px) {
+    #login-buttons.login-buttons-dropdown-align-right #login-dropdown-list {
+        right: auto !Important;
+    }
+}
 .conteudo {
     padding: 20px 30px;
     background: #fff;
