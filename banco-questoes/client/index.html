@@ -1,7 +1,64 @@
 <head>
-    <title>banco-questoes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Banco de Questões</title>
 </head>
 
-<body>
-    <h1>Welcome to Meteor!</h1>
+<body ng-app="banco-questoes">
+    <header ng-controller="HeaderController">
+        <nav class="nav navbar-inverse">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Banco de questões</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li>
+                            <a href="#">
+                                <login-buttons></login-buttons>
+                            </a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-right navbar-input-group" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <button type="submit" class="btn btn-warning"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="center col-sm-12 col-md-9">
+                    <div class="container-fluid conteudo">
+
+                    </div>
+                </div>
+
+                <div class="right col-sm-12 col-md-3">
+                    <div class="container-fluid conteudo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center">
+        2016 <i class="fa fa-copyright"></i> Adalton Dantas, Ivan Miranda, Maily Santos, Thiago Serrão.
+    </footer>
 </body>
