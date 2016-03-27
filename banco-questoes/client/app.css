@@ -33,6 +33,18 @@ body {
         right: auto !Important;
     }
 }
+.navbar-nav a {
+    color: #999 !Important;
+}
+.navbar-nav a:hover,
+.navbar-nav a:focus {
+    color: #eee !Important;
+}
+#login-dropdown-list {
+    background: #222;
+    border: 1px solid #000;
+    color: #999 !Important;
+}
 .conteudo {
     padding: 20px 30px;
     background: #fff;
