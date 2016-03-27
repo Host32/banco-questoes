@@ -38,6 +38,13 @@ body {
     background: #fff;
     border-radius: 5px;
     margin-top: 20px;
+    min-height: 600px;
+}
+.label {
+    margin-right: 5px;
+}
+.page-title {
+    margin-bottom: 30px;
 }
 footer {
     margin-top: 20px;

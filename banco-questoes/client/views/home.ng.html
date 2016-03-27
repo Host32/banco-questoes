@@ -1,3 +1,30 @@
-<div ng-controller="HomeController">
-    <p>Encontre respostas para as mais diversas questões de provas.</p>
+<div ng-controller="HomeController" class="home-page">
+    <h4 class="page-title">Encontre respostas para as mais diversas questões de provas.</h4>
+    <div>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="{{abaSelecionada == 'destaque' && 'active'}}">
+                <a href="#" ng-click="selectTab('destaque')">Destaque</a>
+            </li>
+            <li role="presentation" class="{{abaSelecionada == 'frequentes' && 'active'}}">
+                <a href="#" ng-click="selectTab('frequentes')">Frequentes</a>
+            </li>
+            <li role="presentation" class="{{abaSelecionada == 'emAberto' && 'active'}}">
+                <a href="#" ng-click="selectTab('emAberto')">Em aberto</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="pergunta in perguntas[abaSelecionada]">
+                        <span class="badge">{{pergunta.respostas.length}} respostas</span>
+                        <span class="label label-primary" ng-repeat="tag in pergunta.tags">{{tag}}</span>
+                        <p>{{pergunta.pergunta}}</p>
+                        <p>
+                            <a href="#">Ver respostas</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
