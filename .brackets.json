@@ -10,7 +10,8 @@
         "predef": [
             "$",
             "estadosCidades",
-            "Crimes",
+            "Perguntas",
+            "Mongo",
             "angular",
             "require",
             "describe",

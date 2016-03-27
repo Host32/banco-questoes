@@ -17,8 +17,13 @@
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="pergunta in perguntas[abaSelecionada]">
                         <span class="badge">{{pergunta.respostas.length}} respostas</span>
+                        <span class="label label-success">{{pergunta.countAvaliacoesPos}} <i class="fa fa-thumbs-o-up"></i></span>
+                        <span class="label label-danger">{{pergunta.countAvaliacoesNeg}} <i class="fa fa-thumbs-o-down"></i></span>
                         <span class="label label-primary" ng-repeat="tag in pergunta.tags">{{tag}}</span>
                         <p>{{pergunta.pergunta}}</p>
+                        <p>
+                            {{pergunta.countVisualizacoes}} visualizações
+                        </p>
                         <p>
                             <a href="#">Ver respostas</a>
                         </p>
