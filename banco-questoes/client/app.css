@@ -1,1 +1,67 @@
-/* CSS declarations go here */
+body {
+    margin: 0px;
+    background: #dedede;
+}
+@media (min-width: 768px) {
+    .navbar-input-group {
+        font-size: 0px;
+    }
+    .navbar-input-group input {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .navbar-input-group .btn {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-left: 0px;
+    }
+}
+@media (max-width: 767px) {
+    .navbar-input-group {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .navbar-input-group .btn {
+        width: 100%;
+    }
+}
+.navbar-collapse.in {
+    overflow-y: visible !Important;
+}
+@media(max-width: 992px) {
+    #login-buttons.login-buttons-dropdown-align-right #login-dropdown-list {
+        right: auto !Important;
+    }
+}
+.navbar-nav a {
+    color: #999 !Important;
+}
+.navbar-nav a:hover,
+.navbar-nav a:focus {
+    color: #eee !Important;
+}
+#login-dropdown-list {
+    background: #222;
+    border: 1px solid #000;
+    color: #999 !Important;
+}
+.conteudo {
+    padding: 20px 30px;
+    background: #fff;
+    border-radius: 5px;
+    margin-top: 20px;
+    min-height: 600px;
+}
+.label {
+    margin-right: 5px;
+}
+.page-title {
+    margin-bottom: 30px;
+}
+footer {
+    margin-top: 20px;
+    padding: 20px 40px;
+    background: #333;
+    border-top: 1px solid #000000;
+    color: #ccc;
+}

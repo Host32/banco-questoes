@@ -8,9 +8,10 @@
     "jslint.options": {
         "browser": true,
         "predef": [
+            "_",
             "$",
-            "estadosCidades",
-            "Crimes",
+            "Perguntas",
+            "Mongo",
             "angular",
             "require",
             "describe",
