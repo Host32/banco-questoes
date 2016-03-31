@@ -1,7 +1,168 @@
-<head>
-    <title>banco-questoes</title>
-</head>
-
 <body>
 
+=======
+<body ng-app="banco-questoes">
+    <header ng-controller="HeaderController">
+        <nav class="nav navbar-inverse">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" ui-sref="home">Banco de questões</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <form class="navbar-form navbar-right navbar-input-group" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <button type="submit" class="btn btn-warning"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-if="currentUser">
+                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                Fazer uma pergunta
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <login-buttons align="right"></login-buttons>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="center col-sm-12 col-md-9">
+                    <div class="container-fluid conteudo" ui-view>
+                    </div>
+                </div>
+
+                <div class="right col-sm-12 col-md-3">
+                    <div class="container-fluid conteudo" ng-controller="SidebarController">
+                        <div ng-if="showSimilarBlock()">
+                            <h3 class="page-title">Relacionado</h3>
+                        </div>
+                        <div>
+                            <h3 class="page-title">Tags</h3>
+                            <div ng-repeat="tag in tags">
+                                <span class="label label-primary">{{tag}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center">
+        2016 <i class="fa fa-copyright"></i> Adalton Dantas, Ivan Miranda, Maily Santos, Thiago Serrão.
+    </footer>
+
+
+    <!-- Modal -->
+    <div ng-controller="CadastroPerguntasController">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <form name="formPergunta" ng-submit="formPergunta.$valid && insereNovaPergunta()">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Faça uma pergunta!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Enuciado:</label>
+                                <textarea ng-model="pergunta.enuciado" class="form-control" rows="5" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" ng-click="addAlternativa()" class="btn btn-primary">Adicionar alternativa</button>
+                            </div>
+                            <div ng-repeat="alternativa in pergunta.alternativas">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="col-md-3">Alternativa {{$index+1}}:</label>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <input ng-model="alternativa.texto" type="text" class="form-control" required>
+                                                <span class="input-group-btn">
+                                                        <button type="button" ng-click="removeAlternativa($index)" class="btn btn-danger">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Tags:</span>
+                                    <input ng-model="pergunta.tags" type="text" class="form-control" placeholder="Identifique sua pergunta através das tags...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Oh não! Ocorreu um erro ao tentar executar a operação.</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalSucesso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Obrigado por colaborar! A sua pergunta foi registrada no sistema.</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal -->
+>>>>>>> origin/ivan
 </body>
