@@ -22,23 +22,25 @@
                 <div>
                     <a href="#" data-toggle="collapse" data-target="#comentarios">Comentários</a>
                 </div>
-                <div id="comentarios" class="well collapse">
-                    <p ng-if="pergunta.comentarios.length == 0">
-                        Sem comentários ainda
-                    </p>
-                    <div class="media" ng-repeat="comentario in pergunta.comentarios">
-                        <div class="media-left">
-                            <img class="media-object" src="{{userImage(comentario)}}">
+                <div id="comentarios" class="collapse">
+                    <div class="well">
+                        <p ng-if="pergunta.comentarios.length == 0">
+                            Sem comentários ainda
+                        </p>
+                        <div class="media" ng-repeat="comentario in pergunta.comentarios">
+                            <div class="media-left">
+                                <img class="media-object" src="{{userImage(comentario)}}">
+                            </div>
+                            <div class="media-body">
+                                <p>{{comentario.descricao}}</p>
+                            </div>
                         </div>
-                        <div class="media-body">
-                            <p>{{comentario.descricao}}</p>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="O que acha dessa pergunta?">
-                        <span class="input-group-btn">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="O que acha dessa pergunta?">
+                            <span class="input-group-btn">
                             <button class="btn btn-primary" type="button">Comentar</button>
                         </span>
+                        </div>
                     </div>
                 </div>
             </div>
