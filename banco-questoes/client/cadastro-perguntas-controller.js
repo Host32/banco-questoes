@@ -57,5 +57,95 @@
             });
         };
 
+
+        $scope.adicionaResposta = function (){
+            var respostasExistentes = $scope.pergunta.respostas;
+            respostasExistentes.push({
+                usuarioId: "",
+                data: "",
+                alternativaId: "",
+                justificativa: "",
+                countAvaliacoesPos: 0,
+                countAvaliacoesNeg: 0,
+                avaliacoes: [
+                    {
+                        usuarioId: "",
+                        data: "",
+                        tipo: "" // 1||-1
+                    }
+                ],
+                comentarios: [
+                    {
+                        usuarioId: "",
+                        descricao: "",
+                        data: ""
+                    }
+                ]
+            });
+            
+            Perguntas.Update($scope.pergunta._id, {   //corrigir
+                $set:{
+                    respostas: respostasExistentes
+                }
+            });
+        };
+
+        $scope.adicionaComentarioResposta = function (){
+            
+            var comentariosExistentes = $scope.pergunta.respostas.comentarios;
+            comentariosExistentes.push({
+                usuarioId: "",
+                descricao: "",
+                data: new Date()
+            });
+            
+            Perguntas.Update($scope.pergunta._id, {   //corrigir
+                $set:{
+                    comentarios: comentariosExistentes
+                }
+            });
+        };
+
+        $scope.avaliaRespostaPositivo = function (){            
+            Perguntas.Update($scope.pergunta._id, {   //corrigir
+                $set:{
+                    countAvaliacoesPos: $scope.pergunta.respostas.countAvaliacoesPos + 1
+                }
+            });
+        };
+
+        $scope.avaliaRespostaNegativo= function (){
+            Perguntas.Update($scope.pergunta._id, {   //corrigir
+                $set:{
+                    countAvaliacoesNeg: $scope.pergunta.respostas.countAvaliacoesNeg + 1
+                }
+            });
+        };
+
     }]);
+
+
+    $scope.respostas = {
+        usuarioId: "",
+        data: "",
+        alternativaId: "",
+        justificativa: "",
+        countAvaliacoesPos: 0,
+        countAvaliacoesNeg: 0,
+        avaliacoes: [
+            {
+                usuarioId: "",
+                data: "",
+                tipo: "" // 1||-1
+            }
+        ],
+        comentarios: [
+            {
+                usuarioId: "",
+                descricao: "",
+                data: ""
+            }
+        ]
+    };
+
 }());
