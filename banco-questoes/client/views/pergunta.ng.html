@@ -1,0 +1,85 @@
+<div class="container-fluid" ng-controller="VisualisarPerguntaController">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="label label-primary" ng-repeat="tag in pergunta.tags">{{tag}}</span>
+        </div>
+        <div class="panel-body">
+            <p>
+                {{pergunta.pergunta}}
+            </p>
+            <div class="clearfix">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="alternativa in pergunta.alternativas">
+                        <input type="radio" id="alternativa_{{$index}}" name="alternativa_{{pergunta._id}}" />
+                        <label for="alternativa_{{$index}}">{{alternativa.letra}}) {{alternativa.texto}}</label>
+                    </li>
+                </ul>
+                <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalJustificativa">Responder</button>
+            </div>
+
+            <div>
+                <div>
+                    <a href="#" data-toggle="collapse" data-target="#comentarios">Comentários</a>
+                </div>
+                <div id="comentarios" class="well collapse">
+                    <p ng-if="pergunta.comentarios.length == 0">
+                        Sem comentários ainda
+                    </p>
+                    <div class="media" ng-repeat="comentario in pergunta.comentarios">
+                        <div class="media-left">
+                            <img class="media-object" src="{{userImage(comentario)}}">
+                        </div>
+                        <div class="media-body">
+                            <p>{{comentario.descricao}}</p>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="O que acha dessa pergunta?">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button">Comentar</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <button class="btn btn-danger"><i class="fa fa-thumbs-o-down"></i> {{pergunta.countAvaliacoesNeg}}</button>
+                    <button class="btn btn-success"><i class="fa fa-thumbs-o-up"></i> {{pergunta.countAvaliacoesPos}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4>Respostas</h4>
+    <div class="panel panel-default" ng-repeat="resposta in pergunta.respostas">
+        <div class="panel-heading">
+            Alternativa {{resposta.letra}}
+        </div>
+        <div class="panel-body">
+            {{resposta.justificativa}}
+        </div>
+        <div class="panel-footer">Panel footer</div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="modalJustificativa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Porquê essa é a resposta?
+            </div>
+            <div class="modal-body">
+                <textarea placeholder="Insira uma justificativa" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
