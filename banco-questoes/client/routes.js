@@ -12,7 +12,7 @@
             })
             .state('perguntas', {
                 url: '/perguntas/{id}',
-                template: 'TESTE'
+                templateUrl: 'client/views/pergunta.ng.html'
             });
     }]);
 }());

@@ -8,6 +8,8 @@
     "jslint.options": {
         "browser": true,
         "predef": [
+            "Gravatar",
+            "Meteor",
             "_",
             "$",
             "Perguntas",
