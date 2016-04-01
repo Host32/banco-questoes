@@ -24,6 +24,8 @@
 
         $scope.insereNovaPergunta = function () {
             $scope.fechaModal();
+            var alternativas = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'];
+
             Perguntas.insert({
                 usuarioId: '',
                 data: new Date(),
@@ -38,6 +40,7 @@
                 countVisualizacoes: 0,
                 alternativas: $scope.pergunta.alternativas.map(function (alternativa) {
                     return {
+                        letra: alternativas.shift(),
                         texto: alternativa.texto
                     };
                 }),
