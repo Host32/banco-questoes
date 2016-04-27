@@ -1,1 +1,3 @@
-# pre-hackathon-app3
+# Banco de questões
+
+Toy app for studies.
